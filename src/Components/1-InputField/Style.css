@@ -1,0 +1,37 @@
+form {
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    position: relative;
+}
+
+.input__box {
+    padding: 15px 25px;
+    width: 100%;
+    outline: none;
+    border: 1px solid transparent;
+    border-radius: 25px;
+    box-shadow: 0px 0px 5px 1px #ddd;
+}
+
+.input__submit {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(-10px,-18px);
+    width: 35px;
+    height: 35px;
+    padding: 2px;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #2f74c0;
+    color: white;
+    box-shadow: 0px 0px 4px #000;
+    transition: all 0.2s ease-out;
+}
+
+.input__submit:hover {
+    background-color: #388ae2;
+    transform: scale(1.1) translate(-10px,-16px);;
+}
