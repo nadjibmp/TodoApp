@@ -26,3 +26,21 @@
     font-size: 35px;
   }
 }
+
+.todos{
+  display: flex;
+  justify-content: space-evenly;
+  width: 90%;
+  flex-wrap: wrap;
+}
+
+.todos__single--text{
+  outline: none;
+}
+
+.icon{
+  margin-left: 10px;
+  font-size: 25px;
+  cursor: pointer;
+  
+}
