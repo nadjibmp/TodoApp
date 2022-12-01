@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
   width: 100vw;
   height: 100vh;
@@ -30,10 +36,11 @@
 .todos {
   display: flex;
   justify-content: space-evenly;
-  width: 50%;
+  width: 100%;
   flex-wrap: wrap;
   flex-direction: column;
   margin: 10px 0;
+  padding: 10px;
 }
 
 .todos__single--text {
@@ -44,7 +51,10 @@
   margin-left: 10px;
   font-size: 25px;
   cursor: pointer;
-
+  transition: all ease-in-out 0.1s;
+}
+.icon :hover{
+  transform: scale(1.05);
 }
 
 .todos__single {
@@ -53,22 +63,30 @@
   padding: 10px 15px;
   border-radius: 7px;
   cursor: pointer;
-  width: 50%;
+  width: 100%;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   transition: all 0.2s ease-out;
 }
 
-.todos__single:hover {
-  transform: translateY(2px);
-}
 
 .task__remaining_title {
-  width: 50%;
   text-align: center;
   background-color: #e76f51;
   color: #fff;
   font-size: 14px;
   border-radius: 7px;
-  padding: 5px 15px;;
+  padding: 10px 15px;
+}
+
+.todo__done {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.todos__container {
+  display: flex;
+  width: 50%;
 }

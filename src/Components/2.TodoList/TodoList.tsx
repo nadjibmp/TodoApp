@@ -9,7 +9,7 @@ interface Props {
 }
 const TodoList: React.FC<Props> = ({ todos, setTodos }) => {
     return (
-        <>
+        <div className='todos__container'>
 
             <div className='todos'>
                 <div className='task__remaining_title'>
@@ -27,7 +27,13 @@ const TodoList: React.FC<Props> = ({ todos, setTodos }) => {
                     })
                 }
             </div>
-        </>
+
+            <div className='todo__done'>
+                <div className='task__remaining_title'>
+                    <h2> Task Done </h2>
+                </div>
+            </div>
+        </div>
 
     )
 }

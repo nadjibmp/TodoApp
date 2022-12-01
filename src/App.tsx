@@ -27,8 +27,6 @@ const App: React.FC = () => {
     setTodo("");
   }
 
-  //For testing purpose ...
-
   return (
     <div className="App">
       <h1 className="heading"> Taskify </h1>
