@@ -1,4 +1,5 @@
 import React from 'react'
+import { Droppable } from 'react-beautiful-dnd';
 import { Todo } from '../../Models/model';
 import Card from '../3.Card/Card';
 
@@ -10,29 +11,64 @@ interface Props {
 const TodoList: React.FC<Props> = ({ todos, setTodos }) => {
     return (
         <div className='todos__container'>
-
-            <div className='todos'>
-                <div className='task__remaining_title'>
-                    <h2> Task remaining  </h2>
-                </div>
+            <Droppable droppableId="todoListRemaining">
                 {
-                    todos.map(todo => {
-                        return (
-                            <Card
-                                todo={todo}
-                                key={todo.id}
-                                setTodos={setTodos} />
-                        )
+                    (provided) => (
+                        <div className='todos' ref={provided.innerRef} {...provided.droppableProps}>
+                            <div className='task__remaining_title'>
+                                <h2> Task remaining  </h2>
+                            </div>
+                            {
+                                todos.map((todo, index) => {
+                                    return (
+                                        todo.isDone === false &&
+                                        <Card
+                                            index={index}
+                                            todo={todo}
+                                            key={todo.id}
+                                            todos={todos}
+                                            setTodos={setTodos} />
+                                    )
 
-                    })
+                                })
+                            }
+                            {
+                                provided.placeholder
+                            }
+                        </div>)
+
                 }
-            </div>
 
-            <div className='todo__done'>
-                <div className='task__remaining_title'>
-                    <h2> Task Done </h2>
-                </div>
-            </div>
+            </Droppable>
+
+            <Droppable droppableId='todoListDone'>
+                {
+                    (provided) => (
+                        <div className='todo__done' ref={provided.innerRef} {...provided.droppableProps}>
+                            <div className='task__remaining_title'>
+                                <h2> Task Done </h2>
+                            </div>
+                            {
+                                todos.map((todo, index) => {
+                                    return (
+                                        todo.isDone === true &&
+                                        <Card
+                                            index={index}
+                                            todo={todo}
+                                            key={todo.id}
+                                            todos={todos}
+                                            setTodos={setTodos} />
+                                    )
+                                })
+                            }
+                            {
+                                provided.placeholder
+                            }
+                        </div>
+                    )
+                }
+            </Droppable>
+
         </div>
 
     )

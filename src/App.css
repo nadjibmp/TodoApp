@@ -35,7 +35,7 @@
 
 .todos {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: start;
   width: 100%;
   flex-wrap: wrap;
   flex-direction: column;

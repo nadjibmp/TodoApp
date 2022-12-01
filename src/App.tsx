@@ -3,6 +3,7 @@ import './App.css';
 import InputField from './Components/1.InputField/InputField';
 import { Todo } from './Models/model';
 import TodoList from './Components/2.TodoList/TodoList';
+import { DragDropContext, DropResult } from 'react-beautiful-dnd';
 
 const App: React.FC = () => {
 
@@ -27,12 +28,39 @@ const App: React.FC = () => {
     setTodo("");
   }
 
+  const onDragEnd = (result: DropResult) => {
+    const { destination, source } = result;
+
+    if (!destination) {
+      return;
+    }
+
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+
+
+    // Source Logic
+    if (source.droppableId === "todoListRemaining" && destination.droppableId === "todoListDone") {
+      setTodos(todos.map(todo => todo.id === todos[source.index].id ? { ...todo, isDone: true } : todo));
+    } else if (source.droppableId === "todoListDone" && destination.droppableId === "todoListRemaining") {
+      setTodos(todos.map(todo => todo.id === todos[source.index].id ? {...todo, isDone: false}: todo));
+    }
+  };
+
+  console.log(todos);
   return (
-    <div className="App">
-      <h1 className="heading"> Taskify </h1>
-      <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
-      <TodoList todos={todos} setTodos={setTodos}/>
-    </div>
+    <DragDropContext onDragEnd={onDragEnd}>
+      <div className="App">
+        <h1 className="heading"> Taskify </h1>
+        <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
+        <TodoList todos={todos} setTodos={setTodos} />
+      </div>
+    </DragDropContext>
+
   );
 }
 
