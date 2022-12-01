@@ -1,3 +1,6 @@
+
+## this little project is made to test typeScript only (it's not responsive at all, i didn't use local storage either).
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
